@@ -1,4 +1,4 @@
-package search
+package Search
 
 // BinarySearch fn
 func BinarySearch(data []int, value int) bool {
