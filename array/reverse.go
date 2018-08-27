@@ -1,9 +1,9 @@
-package ReverseArray
+package array
 
-// ReverseArray :
+// Reverse :
 // step 1 swap start and end
 // step 2 increment start and decrement end
-func ReverseArray(data []int, start int, end int) {
+func Reverse(data []int, start int, end int) {
 	i := start
 	j := end
 	for i < j {
