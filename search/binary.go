@@ -1,7 +1,7 @@
-package Search
+package search
 
-// BinarySearch fn
-func BinarySearch(data []int, value int) bool {
+// Binary fn
+func Binary(data []int, value int) bool {
 	size := len(data)
 	low := 0
 	high := size - 1

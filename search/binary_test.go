@@ -1,11 +1,11 @@
-package Search
+package search
 
 import (
 	"testing"
 )
 
-// TestBinarySearchGo test
-func TestBinarySearchGo(t *testing.T) {
+// TestBinarySearch test
+func TestBinarySearch(t *testing.T) {
 	tests := []struct {
 		data   []int
 		value  int
@@ -16,7 +16,7 @@ func TestBinarySearchGo(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := BinarySearch(test.data, test.value)
+		actual := Binary(test.data, test.value)
 		if actual != test.result {
 			t.Errorf("It should return %t instead got %t", test.result, actual)
 		}
