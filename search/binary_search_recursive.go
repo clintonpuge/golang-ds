@@ -1,24 +1,16 @@
 package search
 
-import (
-	"testing"
-)
-
-// TestBinarySearch test
-func TestBinarySearchRecursive(t *testing.T) {
-	tests := []struct {
-		data   []int
-		value  int
-		result bool
-	}{
-		{data: []int{1, 3, 5, 7, 9}, value: 3, result: true},
-		{data: []int{1, 3, 5, 7, 9}, value: 4, result: false},
+// BinarySearchRecursive func
+func BinarySearchRecursive(data []int, low int, high int, value int) int {
+	if high < low {
+		return -1
 	}
-
-	for _, test := range tests {
-		actual := BinaryRecursive(test.data, test.value)
-		if actual != test.result {
-			t.Errorf("It should return %t instead got %t", test.result, actual)
-		}
+	mid := int((low + high) / 2)
+	if data[mid] > value {
+		return BinarySearchRecursive(data, low, mid-1, value)
+	} else if data[mid] < value {
+		return BinarySearchRecursive(data, mid+1, high, value)
+	} else {
+		return mid
 	}
 }
