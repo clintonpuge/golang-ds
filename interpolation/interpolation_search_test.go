@@ -1,4 +1,4 @@
-package gcd
+package interpolation
 
 import (
 	"testing"
