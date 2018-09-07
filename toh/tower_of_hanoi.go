@@ -1,6 +1,9 @@
 package toh
 
-// TowerOfHanoi func
-func TowerOfHanoi(num int) {
-	Util(num, "A", "C", "B")
+import "fmt"
+
+// TowersOfHanoi func
+func TowersOfHanoi(num int) {
+	fmt.Println("The sequence of moves involved in the Tower of Hanoi are :")
+	TowerUtil(num, "A", "C", "B")
 }
