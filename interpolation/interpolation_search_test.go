@@ -13,7 +13,7 @@ func TestInterpolationSearch(t *testing.T) {
 		value  int
 		result int
 	}{
-		{items: {1, 2, 9, 20, 31, 45, 63, 70, 100}, value: 63, result: 6},
+		{items: []int{1, 2, 9, 20, 31, 45, 63, 70, 100}, value: 63, result: 6},
 	}
 	for _, test := range tests {
 		actual := InterpolationSearch(test.items, test.value)
