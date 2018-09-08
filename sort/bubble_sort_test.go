@@ -1,6 +1,7 @@
 package sort
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -15,9 +16,9 @@ func TestBubbleSort(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := BubbleSort(test.data, test.value)
-		if actual != test.result {
-			t.Errorf("It should return %v instead got %v", test.result, actual)
+		BubbleSort(test.data)
+		if !reflect.DeepEqual(test.data, test.result) {
+			t.Errorf("It should return %v instead got %v", test.result, test.data)
 		}
 	}
 }
