@@ -14,6 +14,7 @@ func TestGreatestCommonDivisor(t *testing.T) {
 		result int
 	}{
 		{num1: 270, num2: 192, result: 6},
+		{num1: 10, num2: 45, result: 5},
 	}
 	for _, test := range tests {
 		actual := GreatestCommonDivisor(test.num1, test.num2)
