@@ -14,6 +14,7 @@ func TestSearch(t *testing.T) {
 		result int
 	}{
 		{items: []int{1, 2, 9, 20, 31, 45, 63, 70, 100}, value: 63, result: 6},
+		{items: []int{1, 2, 9, 20, 31, 45, 63, 70, 100}, value: 233, result: -1},
 	}
 	for _, test := range tests {
 		actual := Search(test.items, test.value)

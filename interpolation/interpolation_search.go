@@ -1,46 +1,18 @@
 package interpolation
 
 // Search func
-func Search(array []int, key int) int {
-	min, max := array[0], array[len(array)-1]
-
-	low, high := 0, len(array)-1
-
-	for {
-		if key < min {
-			return low
-		}
-
-		if key > max {
-			return high + 1
-		}
-
-		// make a guess of the location
-		var guess int
-		if high == low {
-			guess = high
+func Search(items []int, value int) int {
+	start, end := 0, len(items)-1
+	min, max := items[start], items[len(items)-1]
+	for start <= end && value >= min && value <= max {
+		pos := start + int((end-start)/(max-min))*(value-min)
+		if value > items[pos] {
+			start = pos + 1
+		} else if value < items[pos] {
+			end = pos - 1
 		} else {
-			size := high - low
-			offset := int(float64(size-1) * (float64(key-min) / float64(max-min)))
-			guess = low + offset
-		}
-
-		// maybe we found it?
-		if array[guess] == key {
-			// scan backwards for start of value range
-			for guess > 0 && array[guess-1] == key {
-				guess--
-			}
-			return guess
-		}
-
-		// if we guessed to high, guess lower or vice versa
-		if array[guess] > key {
-			high = guess - 1
-			max = array[high]
-		} else {
-			low = guess + 1
-			min = array[low]
+			return pos
 		}
 	}
+	return -1
 }
