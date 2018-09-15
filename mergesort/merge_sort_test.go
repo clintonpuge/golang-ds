@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// TestBinarySearch test
+// TestMergeSort test
 func TestMergeSort(t *testing.T) {
 	tests := []struct {
 		data   []int
@@ -16,8 +16,8 @@ func TestMergeSort(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		MergeSort(test.data)
-		if !reflect.DeepEqual(test.data, test.result) {
+		actual := MergeSort(test.data)
+		if !reflect.DeepEqual(actual, test.result) {
 			t.Errorf("It should return %v instead got %v", test.result, test.data)
 		}
 	}
