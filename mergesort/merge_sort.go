@@ -1,32 +1,39 @@
 package mergesort
 
 // MergeSort function
-func MergeSort(numbers []int) []int {
-	if len(numbers) <= 1 {
-		return numbers
-	}
-	mid := len(numbers) / 2
-	leftArr := MergeSort(numbers[:mid])
-	rightArr := MergeSort(numbers[mid:])
-	return merge(leftArr, rightArr)
+func MergeSort(numbers []int) {
+	helper := make([]int, len(numbers))
+	mergeSort(numbers, helper, 0, len(numbers)-1)
 }
 
-func merge(left []int, right []int) []int {
-	arr := make([]int, 0, len(left)+len(right))
-	for len(left) > 0 || len(right) > 0 {
-		if len(left) == 0 {
-			return append(arr, right...)
-		}
-		if len(right) == 0 {
-			return append(arr, left...)
-		}
-		if left[0] <= right[0] {
-			arr = append(arr, left[0])
-			left = left[1:]
-		} else {
-			arr = append(arr, right[0])
-			right = right[1:]
-		}
+func mergeSort(numbers []int, helper []int, low int, high int) {
+	if low < high {
+		mid := int((low + high) / 2)
+		mergeSort(numbers, helper, low, mid)
+		mergeSort(numbers, helper, mid+1, high)
+		merge(numbers, helper, low, mid, high)
 	}
-	return arr
+}
+
+func merge(numbers []int, helper []int, low int, mid int, high int) {
+	for i := low; i <= high; i++ {
+		helper[i] = numbers[i]
+	}
+	leftI := low
+	rightI := mid + 1
+	current := low
+	for leftI <= mid && rightI <= high {
+		if helper[leftI] <= helper[rightI] {
+			numbers[current] = helper[leftI]
+			leftI++
+		} else {
+			numbers[current] = helper[rightI]
+			rightI++
+		}
+		current++
+	}
+	remaining := mid - leftI
+	for i := 0; i <= remaining; i++ {
+		numbers[current+i] = helper[leftI+i]
+	}
 }

@@ -16,8 +16,8 @@ func TestMergeSort(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		actual := MergeSort(test.data)
-		if !reflect.DeepEqual(actual, test.result) {
+		MergeSort(test.data)
+		if !reflect.DeepEqual(test.data, test.result) {
 			t.Errorf("It should return %v instead got %v", test.result, test.data)
 		}
 	}
