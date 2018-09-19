@@ -7,19 +7,22 @@ import (
 
 // TestMergeAndSort test
 func TestMergeAndSort(t *testing.T) {
+	left1 := make([]int, 3)
+	left1 = append([]int{1, 2, 4}, left1...)
 	tests := []struct {
-		left   []int
-		right  []int
-		result []int
+		left       []int
+		right      []int
+		leftCount  int
+		rightCount int
+		result     []int
 	}{
-		{left: []int{8, 3, 5, 4, 7, 9}, right: []int{2, 1, 11, 6}, result: []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 11}},
-		{left: []int{8, 3, 5}, right: []int{2, 1, 11, 6}, result: []int{1, 2, 3, 5, 6, 8, 11}},
+		{left: left1, right: []int{3, 5, 6}, result: []int{1, 2, 3, 4, 5, 6}, leftCount: 3, rightCount: 3},
 	}
 
 	for _, test := range tests {
-		MergeAndSort(test.data)
-		if !reflect.DeepEqual(test.data, test.result) {
-			t.Errorf("It should return %v instead got %v", test.result, test.data)
+		MergeAndSort(test.left, test.right, test.leftCount, test.rightCount)
+		if !reflect.DeepEqual(test.left, test.result) {
+			t.Errorf("It should return %v instead got %v", test.result, test.left)
 		}
 	}
 }
